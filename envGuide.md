@@ -19,6 +19,14 @@ BETTER_AUTH_URL=https://velora-psi-ten.vercel.app
 # 3. Public Client URLs
 NEXT_PUBLIC_APP_URL=https://velora-psi-ten.vercel.app
 NEXT_PUBLIC_BETTER_AUTH_URL=https://velora-psi-ten.vercel.app
+
+# 4. Optional: Custom SMTP Email Provider (Gmail / Resend / Brevo / Mailgun)
+# If omitted, password reset links will log securely to server console without error
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+EMAIL_FROM=Velora Atelier <no-reply@velora.luxury>
 ```
 
 ---
@@ -34,4 +42,11 @@ BETTER_AUTH_URL=http://localhost:3000
 
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
+
+# Optional SMTP (leave blank to log reset URLs directly in console)
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASSWORD=
+EMAIL_FROM=Velora Atelier <no-reply@velora.luxury>
 ```

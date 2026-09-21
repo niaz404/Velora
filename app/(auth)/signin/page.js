@@ -123,6 +123,12 @@ export default function SignInPage() {
               <label className="text-xs font-semibold text-[#2B2B2B]">
                 Password
               </label>
+              <Link
+                href="/forgot-password"
+                className="text-xs font-semibold text-[#7A6A53] hover:underline"
+              >
+                Forgot password?
+              </Link>
             </div>
             <div className="relative">
               <input
