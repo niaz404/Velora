@@ -11,11 +11,7 @@ import {
   AlertCircle, 
   Check, 
   X, 
-  ExternalLink,
   Sparkles,
-  Tag,
-  DollarSign,
-  Layers
 } from "lucide-react";
 
 export default function DashboardProductsPage() {
@@ -28,7 +24,6 @@ export default function DashboardProductsPage() {
   const [submitting, setSubmitting] = useState(false);
   const [feedback, setFeedback] = useState({ message: "", type: "" });
 
-  // Form state
   const initialForm = {
     name: "",
     slug: "",
@@ -461,7 +456,7 @@ export default function DashboardProductsPage() {
                     required
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    placeholder="e.g. Women, Men, Accessories"
+                    placeholder="e.g. Haute Couture, Knitwear, Leather Goods"
                     className="w-full rounded-2xl border border-[#2C2723] bg-[#141210] p-3 text-xs text-white focus:border-[#7A6A53] focus:outline-none"
                   />
                 </div>

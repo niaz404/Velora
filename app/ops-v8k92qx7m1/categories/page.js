@@ -8,8 +8,6 @@ import {
   Check, 
   AlertCircle, 
   X, 
-  Package, 
-  Sparkles,
   ArrowRight
 } from "lucide-react";
 import Link from "next/link";
@@ -174,7 +172,7 @@ export default function DashboardCategoriesPage() {
 
               <div className="mt-6 pt-4 border-t border-[#2C2723] flex items-center justify-between text-xs">
                 <Link
-                  href={`/shop?category=${encodeURIComponent(cat.name)}`}
+                  href={`/shop?category=${encodeURIComponent(cat.slug || cat.name)}`}
                   className="flex items-center gap-1 font-bold text-[#D4A373] hover:text-[#e4be93] transition"
                   target="_blank"
                 >

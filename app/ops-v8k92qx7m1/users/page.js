@@ -5,8 +5,6 @@ import {
   Users, 
   Search, 
   ShieldCheck, 
-  ShieldAlert, 
-  UserCheck, 
   Check, 
   AlertCircle, 
   X,
@@ -60,7 +58,7 @@ export default function DashboardUsersPage() {
       );
 
       setFeedback({
-        message: `User permissions updated to "${newRole}".`,
+        message: `User clearance updated to "${newRole}".`,
         type: "success"
       });
     } catch (err) {

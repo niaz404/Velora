@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { DASHBOARD_URL } from "@/lib/constants";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
@@ -169,7 +170,7 @@ export default function ProfilePage() {
             </div>
             {profile.role && profile.role !== "customer" && (
               <Link
-                href="/dashboard"
+                href={DASHBOARD_URL}
                 className="flex items-center gap-2 rounded-2xl bg-[#7A6A53] hover:bg-[#655743] px-5 py-2.5 text-xs font-bold text-white transition shadow-md self-start sm:self-auto"
               >
                 <Shield size={14} /> Open {profile.role.replace("_", " ")} Studio

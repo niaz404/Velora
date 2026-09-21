@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import { DASHBOARD_URL } from "@/lib/constants";
 
 export default function DashboardSidebar({ user }) {
   const pathname = usePathname();
@@ -22,31 +23,31 @@ export default function DashboardSidebar({ user }) {
   const allNavItems = [
     {
       label: "Overview",
-      href: "/dashboard",
+      href: `${DASHBOARD_URL}`,
       icon: LayoutDashboard,
       roles: ["super_admin", "admin", "seller", "support"],
     },
     {
       label: "Products Catalog",
-      href: "/dashboard/products",
+      href: `${DASHBOARD_URL}/products`,
       icon: Package,
       roles: ["super_admin", "admin", "seller"],
     },
     {
       label: "Orders & Support",
-      href: "/dashboard/orders",
+      href: `${DASHBOARD_URL}/orders`,
       icon: ShoppingBag,
       roles: ["super_admin", "admin", "support"],
     },
     {
       label: "Categories",
-      href: "/dashboard/categories",
+      href: `${DASHBOARD_URL}/categories`,
       icon: FolderTree,
       roles: ["super_admin", "admin"],
     },
     {
       label: "Users & Roles",
-      href: "/dashboard/users",
+      href: `${DASHBOARD_URL}/users`,
       icon: Users,
       roles: ["super_admin", "admin"],
     },
@@ -74,7 +75,7 @@ export default function DashboardSidebar({ user }) {
       <div>
         {/* BRAND LOGO */}
         <div className="p-6 border-b border-[#2C2723] flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center gap-2">
+          <Link href={DASHBOARD_URL} className="flex items-center gap-2">
             <span className="text-xl font-black tracking-tight text-white">Velora</span>
             <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#7A6A53] text-white">
               Studio

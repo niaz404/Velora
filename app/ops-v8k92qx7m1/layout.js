@@ -1,6 +1,6 @@
 import { getAuthUser } from "@/lib/admin-auth";
 import Link from "next/link";
-import { ShieldAlert, LogIn, ArrowLeft, Lock } from "lucide-react";
+import { ShieldAlert, Lock, ArrowLeft } from "lucide-react";
 import DashboardSidebar from "./_components/DashboardSidebar";
 import DashboardHeader from "./_components/DashboardHeader";
 
@@ -11,7 +11,7 @@ export const metadata = {
   description: "Secure role-based dashboard for Velora store management.",
 };
 
-export default async function DashboardLayout({ children }) {
+export default async function OperationsLayout({ children }) {
   const user = await getAuthUser();
 
   // 1. Not Authenticated
@@ -25,7 +25,7 @@ export default async function DashboardLayout({ children }) {
           Authentication Required
         </h1>
         <p className="mt-2 max-w-md text-xs sm:text-sm text-white/60">
-          You must be logged in to access the Velora management studio.
+          You must be signed in with staff clearance to access this terminal.
         </p>
         <div className="mt-8 flex gap-4">
           <Link
@@ -45,7 +45,7 @@ export default async function DashboardLayout({ children }) {
     );
   }
 
-  // 2. Customer Role (Unauthorized for management operations)
+  // 2. Customer Role (Restricted)
   if (user.role === "customer") {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-[#141210] px-4 text-center text-[#E8DFD1]">
@@ -56,13 +56,8 @@ export default async function DashboardLayout({ children }) {
           Staff Access Only
         </h1>
         <p className="mt-2 max-w-md text-xs sm:text-sm text-white/60 leading-relaxed">
-          Your account is currently registered as a <strong className="text-amber-400">Customer</strong>. The management dashboard is restricted to staff roles (Seller, Support, Admin, and Super Admin).
+          Your account is registered as a <strong className="text-amber-400">Customer</strong>. This management environment is strictly reserved for authorized staff roles.
         </p>
-
-        <div className="mt-4 rounded-2xl bg-[#1A1714] border border-[#2C2723] p-4 text-xs text-left max-w-sm w-full space-y-1">
-          <p className="text-white/40">Logged in as: <span className="text-white font-semibold">{user.email}</span></p>
-          <p className="text-white/40">Assigned Role: <span className="text-amber-400 font-bold uppercase">customer</span></p>
-        </div>
 
         <div className="mt-8 flex gap-4">
           <Link

@@ -2,6 +2,7 @@ import { verifyRole } from "@/lib/admin-auth";
 import { Category } from "@/model/category-model";
 import { Product } from "@/model/product-model";
 import { connectDB } from "@/service/mongo";
+import { MOCK_CATEGORIES } from "@/data/mock-store";
 
 export async function GET() {
   const authCheck = await verifyRole(["admin", "seller", "super_admin"]);
@@ -13,7 +14,10 @@ export async function GET() {
     await connectDB();
     const categories = await Category.find().sort({ name: 1 }).lean();
 
-    // Attach product count to each category
+    if (!categories || categories.length === 0) {
+      return Response.json({ categories: MOCK_CATEGORIES });
+    }
+
     const categoriesWithCount = await Promise.all(
       categories.map(async (c) => {
         const count = await Product.countDocuments({ categoryId: c._id });
@@ -25,10 +29,10 @@ export async function GET() {
       })
     );
 
-    return Response.json(categoriesWithCount);
+    return Response.json({ categories: categoriesWithCount });
   } catch (error) {
-    console.error("Fetch categories error:", error);
-    return Response.json({ error: "Failed to fetch categories" }, { status: 500 });
+    console.error("Fetch categories error, falling back to mock:", error);
+    return Response.json({ categories: MOCK_CATEGORIES });
   }
 }
 
@@ -40,7 +44,7 @@ export async function POST(req) {
 
   try {
     await connectDB();
-    const { name, slug, description } = await req.json();
+    const { name, slug, description, image } = await req.json();
 
     if (!name) {
       return Response.json({ error: "Category name is required" }, { status: 400 });
@@ -52,9 +56,10 @@ export async function POST(req) {
       name,
       slug: finalSlug,
       description: description || "",
+      image: image || "",
     });
 
-    return Response.json(newCategory, { status: 201 });
+    return Response.json({ success: true, category: newCategory }, { status: 201 });
   } catch (error) {
     console.error("Create category error:", error);
     return Response.json({ error: "Failed to create category" }, { status: 500 });

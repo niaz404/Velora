@@ -11,11 +11,10 @@ import {
   X, 
   Eye, 
   Phone, 
-  Mail, 
-  MapPin, 
-  CreditCard,
   Calendar,
-  Check
+  Check,
+  MapPin,
+  CreditCard
 } from "lucide-react";
 
 export default function DashboardOrdersPage() {

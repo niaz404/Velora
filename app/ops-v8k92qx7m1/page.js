@@ -9,13 +9,11 @@ import {
   Users, 
   ArrowUpRight, 
   AlertTriangle, 
-  Clock, 
   CheckCircle2, 
-  Truck, 
   Plus,
-  Layers,
   ShieldCheck
 } from "lucide-react";
+import { DASHBOARD_URL } from "@/lib/constants";
 
 export default function DashboardOverviewPage() {
   const [stats, setStats] = useState(null);
@@ -101,20 +99,20 @@ export default function DashboardOverviewPage() {
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full bg-[#7A6A53]/20 border border-[#7A6A53]/40 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#D4A373]">
-              <ShieldCheck size={13} /> {userRole.replace("_", " ")} Workspace
+              <ShieldCheck size={13} /> {userRole?.replace("_", " ")} Workspace
             </div>
             <h1 className="mt-3 text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Velora Executive Control
             </h1>
             <p className="mt-1 text-xs sm:text-sm text-[#E8DFD1]/60">
-              Live enterprise management: track orders, manage luxury inventory, and monitor store health.
+              Live enterprise terminal: track orders, manage luxury inventory, and monitor store health.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-3">
             {(userRole === "admin" || userRole === "super_admin" || userRole === "seller") && (
               <Link
-                href="/dashboard/products"
+                href={`${DASHBOARD_URL}/products`}
                 className="flex items-center gap-2 rounded-2xl bg-[#7A6A53] hover:bg-[#655743] px-5 py-2.5 text-xs sm:text-sm font-bold text-white transition shadow-lg shadow-black/40"
               >
                 <Plus size={16} /> Add Product
@@ -122,7 +120,7 @@ export default function DashboardOverviewPage() {
             )}
             {(userRole === "admin" || userRole === "super_admin" || userRole === "support") && (
               <Link
-                href="/dashboard/orders"
+                href={`${DASHBOARD_URL}/orders`}
                 className="flex items-center gap-2 rounded-2xl border border-[#3D3630] bg-[#1A1714] hover:bg-[#2A241F] px-5 py-2.5 text-xs sm:text-sm font-semibold text-[#E8DFD1] transition"
               >
                 <ShoppingBag size={16} /> Manage Orders
@@ -225,7 +223,7 @@ export default function DashboardOverviewPage() {
               <p className="text-xs text-[#E8DFD1]/60">Latest transactions requiring fulfillment</p>
             </div>
             <Link
-              href="/dashboard/orders"
+              href={`${DASHBOARD_URL}/orders`}
               className="text-xs font-bold text-[#D4A373] hover:text-[#e4be93] flex items-center gap-1 transition"
             >
               View All <ArrowUpRight size={14} />

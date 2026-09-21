@@ -5,6 +5,7 @@ import { Bell, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { DASHBOARD_URL } from "@/lib/constants";
 
 import {
   DropdownMenu,
@@ -215,7 +216,7 @@ export default function Icons() {
 
             {user.role && user.role !== "customer" && (
               <DropdownMenuItem
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push(DASHBOARD_URL)}
                 className="cursor-pointer rounded-xl px-3 py-2 text-xs font-bold text-[#7A6A53] hover:bg-[#F5EFE4]"
               >
                 🎛️ Operations Studio ({user.role.replace("_", " ")})
