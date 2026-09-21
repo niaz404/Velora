@@ -20,19 +20,21 @@ export default function Navigation() {
           const isActive = pathname === item.href;
 
           return (
-            <li key={item.href}>
+            <li key={item.href} className="group relative">
               <Link
                 href={item.href}
-                className="relative px-2 py-1 transition-colors hover:text-[#2B2B2B]"
+                className={`relative px-2 py-1 transition-colors ${
+                  isActive
+                    ? "font-bold text-[#2B2B2B]"
+                    : "text-[#6F6A63] hover:text-[#2B2B2B]"
+                }`}
               >
                 {item.label}
 
                 {/* underline */}
                 <span
-                  className={`absolute left-0 -bottom-1 h-0.5 transition-all duration-300 ${
-                    isActive
-                      ? "w-full bg-[#7A6A53]"
-                      : "w-0 bg-[#7A6A53] group-hover:w-full"
+                  className={`absolute left-0 -bottom-1 h-0.5 rounded-full bg-[#7A6A53] transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
               </Link>

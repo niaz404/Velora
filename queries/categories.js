@@ -3,7 +3,8 @@ import { connectDB } from "@/service/mongo";
 
 export const getCategories = async (limit) => {
   try {
-    await connectDB();
+    const conn = await connectDB();
+    if (!conn) return [];
 
     let query = Category.find().lean();
 
@@ -13,10 +14,10 @@ export const getCategories = async (limit) => {
 
     return categories.map((cat) => ({
       ...cat,
-      _id: cat._id.toString(),
+      _id: cat._id?.toString(),
     }));
   } catch (error) {
-    console.log("Failed to get Categories:", error);
-    throw error;
+    console.error("Failed to get Categories:", error);
+    return [];
   }
 };
