@@ -2,29 +2,76 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* =====  Scrollbar ===== */
+/* ===== Custom Luxury Theme Tokens & Micro-Interactions ===== */
 
+:root {
+  --color-brand-primary: #7A6A53;
+  --color-brand-primary-hover: #655743;
+  --color-brand-dark: #1C1917;
+  --color-brand-cream: #FAF7F2;
+  --color-brand-sand: #F3ECE1;
+  --color-brand-border: #E8DFD1;
+  --color-brand-accent: #D4A373;
+}
+
+::selection {
+  background-color: #7A6A53;
+  color: #FAF7F2;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #FAF7F2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(122, 106, 83, 0.35); /* soft theme brown */
+  background: rgba(122, 106, 83, 0.4);
   border-radius: 999px;
+  border: 2px solid #FAF7F2;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(122, 106, 83, 0.7);
+  background: rgba(122, 106, 83, 0.75);
 }
 
 /* Firefox support */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(122, 106, 83, 0.35) transparent;
+  scrollbar-color: rgba(122, 106, 83, 0.4) #FAF7F2;
+}
+
+/* Floating animation utilities */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtle-float 4s ease-in-out infinite;
+}
+
+/* Shimmer gradient effect for banners and buttons */
+.shimmer-glow {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
 }
