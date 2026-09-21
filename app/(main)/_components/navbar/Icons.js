@@ -213,6 +213,15 @@ export default function Icons() {
               🛒 My Cart
             </DropdownMenuItem>
 
+            {user.role && user.role !== "customer" && (
+              <DropdownMenuItem
+                onClick={() => router.push("/dashboard")}
+                className="cursor-pointer rounded-xl px-3 py-2 text-xs font-bold text-[#7A6A53] hover:bg-[#F5EFE4]"
+              >
+                🎛️ Operations Studio ({user.role.replace("_", " ")})
+              </DropdownMenuItem>
+            )}
+
             <DropdownMenuSeparator className="bg-[#E8DFD1]" />
 
             <DropdownMenuItem

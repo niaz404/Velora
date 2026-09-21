@@ -158,13 +158,23 @@ export default function ProfilePage() {
         {/* MAIN CONTENT */}
         <div className="space-y-6 md:col-span-2">
           {/* HEADER CARD */}
-          <div className="rounded-3xl border border-[#E8DFD1] bg-white p-6 shadow-xs">
-            <h1 className="text-2xl font-bold text-[#2B2B2B]">
-              Account Overview
-            </h1>
-            <p className="mt-1 text-sm text-[#6F6A63]">
-              Personal information and membership details
-            </p>
+          <div className="rounded-3xl border border-[#E8DFD1] bg-white p-6 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-[#2B2B2B]">
+                Account Overview
+              </h1>
+              <p className="mt-1 text-sm text-[#6F6A63]">
+                Personal information and membership details
+              </p>
+            </div>
+            {profile.role && profile.role !== "customer" && (
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-2 rounded-2xl bg-[#7A6A53] hover:bg-[#655743] px-5 py-2.5 text-xs font-bold text-white transition shadow-md self-start sm:self-auto"
+              >
+                <Shield size={14} /> Open {profile.role.replace("_", " ")} Studio
+              </Link>
+            )}
           </div>
 
           {/* INFO GRID */}
